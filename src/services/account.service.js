@@ -18,4 +18,4 @@ let getProfile = (token) => {
 
 export const accountService = {
     login, getProfile
-}
+} 

@@ -5,7 +5,7 @@ import './styles/style.scss';
 import Footer from './pages/Footer';
 import SignIn from './pages/SignIn';
 import ProfilPage from './pages/ProfilPage';
-import Transactons from './pages/Transactons';
+//import Transactons from './pages/Transactons';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path={'/'} exact element={<Home />}/>
           <Route path={'/signin'} exact element={<SignIn />}/>
           <Route path={'/profilpage'} exact element={<ProfilPage />}/>
-          <Route path={'/transaction'} exact element={<Transactons />}/>
+          {/* <Route path={'/transaction'} exact element={<Transactons />}/> */}
           <Route path={'*'} element={<Erreur_404 />}/>  
         </Routes>
         <Footer />

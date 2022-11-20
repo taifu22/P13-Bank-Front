@@ -12,7 +12,7 @@ const persistConfig = {
 const reducers = combineReducers({ user: userReducer });
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-export default configureStore({
+export default configureStore({ 
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

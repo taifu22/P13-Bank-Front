@@ -13,6 +13,9 @@ function SignIn() {
         password: 'default' 
     });
 
+    //state for store error login if username or password are note valids
+    const [errorLogin, setErrorLogin] = useState();
+
     const navigate = useNavigate();;
     const dispatch = useDispatch();
 
@@ -32,11 +35,15 @@ function SignIn() {
                 dispatch(setTokenData(res.data))
                 accountService.getProfile(res.data.body.token)
                       .then(res => {
+                        console.log(res);
                         dispatch(setUserData(res.data))
                         navigate('/profilpage');
                       })
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                setErrorLogin('User not found!')
+                console.log(error.response.data.message)
+            })
     }
 
     return ( 
@@ -46,6 +53,7 @@ function SignIn() {
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
+                {errorLogin ? <p style={{color:'red'}}>{errorLogin}</p> : ""}
                 <form onSubmit={(e) => onSubmitForm(e)}>
                     <div className="input-wrapper">
                         <label>Username</label> 

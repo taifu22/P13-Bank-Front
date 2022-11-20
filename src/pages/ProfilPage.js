@@ -59,11 +59,6 @@ function ProfilPage() {
              })
     }
 
-    //function to view tranactions
-    function Viewtransaction(params) {
-        return navigate('/transaction', {state:{data:params}});
-    }
-
     //conition in a useEffect for navigate in signin page if data = null
     useEffect(()=>{
         if (data == null || token == null) {
@@ -71,6 +66,11 @@ function ProfilPage() {
             navigate('/signin');
         }
     },[])
+
+    //function to view tranactions
+    // function Viewtransaction(params) {
+    //     return navigate('/transaction', {state:{data:params}});
+    // }
 
     return (
         <>
@@ -97,7 +97,7 @@ function ProfilPage() {
                 <p className="account-amount-description">Available Balance</p>
                 </div>
                 <div className="account-content-wrapper cta">
-                <button onClick={() => Viewtransaction('$2,082.79')} className="transaction-button">View transactions</button>
+                 <button /* onClick={() => Viewtransaction('$2,082.79')}*/ className="transaction-button">View transactions</button> 
                 </div>
             </section>
             <section className="account">
@@ -107,7 +107,7 @@ function ProfilPage() {
                 <p className="account-amount-description">Available Balance</p>
                 </div>
                 <div className="account-content-wrapper cta">
-                <button onClick={() => Viewtransaction('$10,928.42')} className="transaction-button">View transactions</button>
+                <button /*onClick={() => Viewtransaction('$10,928.42')}*/ className="transaction-button">View transactions</button>
                 </div>
             </section>
             <section className="account">
@@ -117,7 +117,7 @@ function ProfilPage() {
                 <p className="account-amount-description">Current Balance</p>
                 </div>
                 <div className="account-content-wrapper cta">
-                <button onClick={() => Viewtransaction('$184.30')} className="transaction-button">View transactions</button>
+                <button /*onClick={() => Viewtransaction('$184.30')}*/ className="transaction-button">View transactions</button>
                 </div>
             </section>
         </div> : <SignIn />}
