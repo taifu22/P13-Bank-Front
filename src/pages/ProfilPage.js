@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SignIn from './SignIn';
 import Nav from '../composants/Nav';
 import { useSelector,useDispatch } from 'react-redux';
@@ -9,11 +9,12 @@ import { useNavigate } from 'react-router-dom';
 function ProfilPage() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [toggle, setToggle] = useState(false)
 
     const [dataEdit, setDataEdit] = useState({
         firstName: 'default',
-        lastName: 'default'
+        lastName: 'default' 
     });
 
     //function for set the data state with value of input first and lastName
@@ -25,8 +26,20 @@ function ProfilPage() {
     }
 
     //Data recovery from the redux store (user information and token)
-    const data = useSelector((state) => state.user.users.body)
-    const token = useSelector((state) => state.user.token.body.token)
+    const data = useSelector((state) => {
+        if (state.user.users == null || state.user.users == undefined) {
+            return null
+        } else {
+            return state.user.users.body
+        }
+    })
+    const token = useSelector((state) => {
+        if (state.user.token == null || state.user.token == undefined) {
+            return null
+        } else {
+            return state.user.token.body.token
+        }
+    })
 
     //function for toggle inputs of edit last and firstName
     function ToggleButton() {
@@ -47,10 +60,17 @@ function ProfilPage() {
     }
 
     //function to view tranactions
-    const navigate = useNavigate();
     function Viewtransaction(params) {
         return navigate('/transaction', {state:{data:params}});
     }
+
+    //conition in a useEffect for navigate in signin page if data = null
+    useEffect(()=>{
+        if (data == null || token == null) {
+            console.log(data);
+            navigate('/signin');
+        }
+    },[])
 
     return (
         <>

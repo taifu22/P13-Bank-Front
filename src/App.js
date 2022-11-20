@@ -16,7 +16,7 @@ function App() {
           <Route path={'/signin'} exact element={<SignIn />}/>
           <Route path={'/profilpage'} exact element={<ProfilPage />}/>
           <Route path={'/transaction'} exact element={<Transactons />}/>
-          <Route path={'*'} element={<Erreur_404 />}/> 
+          <Route path={'*'} element={<Erreur_404 />}/>  
         </Routes>
         <Footer />
       </BrowserRouter> 
